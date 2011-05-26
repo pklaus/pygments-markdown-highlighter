@@ -36,6 +36,7 @@ if (!class_exists("PygmentsMarkdownHighlighter")) {
 
   class PygmentsMarkdownHighlighter {
 
+    private $command;
     private $lineno;
     private $linenos;
     private $pygmentize_found;
@@ -44,7 +45,12 @@ if (!class_exists("PygmentsMarkdownHighlighter")) {
 
     function PygmentsMarkdownHighlighter() {
       // Find pygmentize
-      exec("pygmentize", $output, $retval);
+      $this->command = get_option('pygments_markdown_highlighter_path', '');
+      if (empty($this->command)) {
+        $this->command = 'pygmentize';
+      }
+
+      exec($this->command, $output, $retval);
       unset($output);
 
       if ($retval == 0) {
@@ -114,7 +120,7 @@ if (!class_exists("PygmentsMarkdownHighlighter")) {
         2 => array("pipe", "w")
       );
 
-      $process = proc_open("pygmentize -f html " . $opts . " -l " . $lexer, $descriptors, $pipes);
+      $process = proc_open($this->command . " -f html " . $opts . " -l " . $lexer, $descriptors, $pipes);
       if (is_resource($process)) {
         // Dump the lines to the pipe
         foreach ($lines as $line) {
@@ -141,6 +147,7 @@ if (!class_exists("PygmentsMarkdownHighlighter")) {
 
     function register_settings() {
       register_setting('pygments-markdown-highlighter-settings-group', 'pygments_markdown_highlighter_lineno');
+      register_setting('pygments-markdown-highlighter-settings-group', 'pygments_markdown_highlighter_path');
       register_setting('pygments-markdown-highlighter-settings-group', 'pygments_markdown_highlighter_style');
     }
 
@@ -162,7 +169,7 @@ if (!class_exists("PygmentsMarkdownHighlighter")) {
       echo '<h2>Pygments Markdown Highlighter</h2>';
 
       if (!$this->pygmentize_found) {
-        echo '<div class="updated fade below-h2">The Pygmentize binary could not be found!</div>';
+        echo '<div class="error fade below-h2"><p><strong>The Pygmentize binary could not be found!</strong></p></div>';
       }
 
       echo '<form method="post" action="options.php">';
@@ -206,6 +213,17 @@ if (!class_exists("PygmentsMarkdownHighlighter")) {
       echo '</select>';
       echo '</td>';
       echo '</tr>';
+
+      // Path
+      echo '<tr valign="top">';
+      echo '<th scope="row">Path</th>';
+      echo '<td>';
+      echo '<input type="text" name="pygments_markdown_highlighter_path" value="';
+      echo get_option('pygments_markdown_highlighter_path', '');
+      echo '" size="100" />';
+      echo '</td>';
+      echo '</tr>';
+
       echo '</table>';
 
       echo '<p class="submit">';
