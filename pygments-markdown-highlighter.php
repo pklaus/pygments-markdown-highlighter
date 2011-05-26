@@ -124,7 +124,7 @@ if (!class_exists("PygmentsMarkdownHighlighter")) {
       if (is_resource($process)) {
         // Dump the lines to the pipe
         foreach ($lines as $line) {
-          fwrite($pipes[0], $line);
+          fwrite($pipes[0], html_entity_decode($line));
           fwrite($pipes[0], "\n");
         }
         fclose($pipes[0]);
