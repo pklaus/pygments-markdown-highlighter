@@ -193,7 +193,7 @@ if (!class_exists("PygmentsMarkdownHighlighter")) {
 
       // Line Numbers
       echo '<tr valign="top">';
-      echo '<th scope="row">Line Numbers</th>';
+      echo '<th scope="row">Print Line Numbers via</th>';
       echo '<td>';
       echo '<select name="pygments_markdown_highlighter_lineno">';
 
@@ -211,7 +211,7 @@ if (!class_exists("PygmentsMarkdownHighlighter")) {
 
       // Style
       echo '<tr valign="top">';
-      echo '<th scope="row">Style</th>';
+      echo '<th scope="row">CSS Style for the Code Blocks</th>';
       echo '<td>';
       echo '<select name="pygments_markdown_highlighter_style">';
 
@@ -229,7 +229,7 @@ if (!class_exists("PygmentsMarkdownHighlighter")) {
 
       // Path
       echo '<tr valign="top">';
-      echo '<th scope="row">Path</th>';
+      echo '<th scope="row">Custom Path for the Pygments Binary</th>';
       echo '<td>';
       echo '<input type="text" name="pygments_markdown_highlighter_path" value="';
       echo get_option('pygments_markdown_highlighter_path', '');
