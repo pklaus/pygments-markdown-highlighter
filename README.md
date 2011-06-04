@@ -58,12 +58,12 @@ THE SOFTWARE.
 ### Author
 
 * Stephen H. Gerstacker – The original author of this plugin
-  * <http://shortround.net/>
-  * <https://github.com/stack/pygments-markdown-highlighter>
+  * Homepage: <http://shortround.net/>
+  * Source Code: <https://github.com/stack/pygments-markdown-highlighter>
 
 * Philipp Klaus – Contributions to the documentation
-  * <http://wp.me/p1fyOX-ZJ>
-  * <https://github.com/pklaus/pygments-markdown-highlighter>
+  * Blog post on pygments-markdown-highlighter: <http://wp.me/p1fyOX-ZJ>
+  * Source Code: <https://github.com/pklaus/pygments-markdown-highlighter>
 
 [WordPress]: http://wordpress.org/
 [Pygments]: http://pygments.org
