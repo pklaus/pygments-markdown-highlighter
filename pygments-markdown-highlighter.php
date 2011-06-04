@@ -83,6 +83,19 @@ if (!class_exists("PygmentsMarkdownHighlighter")) {
         'administrator',
         __FILE__,
         array(&$this, 'settings_page'));
+      add_filter('plugin_action_links', array(&$this, 'add_settings_link'), 10, 2 );
+    }
+
+    // Add Settings link to plugins
+    function add_settings_link($links, $file) {
+      static $this_plugin;
+      if (!$this_plugin) $this_plugin = plugin_basename(__FILE__);
+      
+      if ($file == $this_plugin){
+        $settings_link = '<a href="options-general.php?page=pygments-markdown-highlighter/pygments-markdown-highlighter.php">'.__("Settings", "photosmash-galleries").'</a>';
+        array_unshift($links, $settings_link);
+      }
+      return $links;
     }
 
     function filter_content($text) {
