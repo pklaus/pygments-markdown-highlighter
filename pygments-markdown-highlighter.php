@@ -108,7 +108,7 @@ if (!class_exists("PygmentsMarkdownHighlighter")) {
       $lexer = "text";
 
       // If a lexer is given, find it and remove the lexer line
-      if (preg_match('/^:::([a-zA-Z0-9\.\+-]*)$/', $lines[0], $inner_matches)) {
+      if (preg_match('/^#!([a-zA-Z0-9\.\+-]*)$/', $lines[0], $inner_matches)) {
         $lexer = $inner_matches[1];
         unset($lines[0]);
       }

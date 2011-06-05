@@ -31,7 +31,16 @@ http://yourblog/wp-admin/options-general.php?page=pygments-markdown-highlighter/
 
 ### Usage
 
-To highlight code in your posts, simply add a line `:::lexername` to the first line of your code. Replace `lexername` with the lexer keyword for the language that you want to be highlighted as shown in the [List of Pygments Lexers][].
+To highlight code in your posts, add a shebang styled first line `    #!lexername` to your code. Replace `lexername` with the lexer keyword for the language that you want to be highlighted as shown in the [List of Pygments Lexers][].
+
+### Upgrading
+
+The first version of this plugin by Stephen H. Gerstacker used a different notation: `    :::lexername`. To convert posts from the old notation to the shebang style notation you can use the following SQL commands:
+
+1. Search affected posts:  
+   `SELECT post_content FROM wp_posts WHERE post_content LIKE "%\n    :::%";`
+2. Updated affected posts:
+   `UPDATE wp_posts SET post_content = REPLACE(post_content, "\n    :::","\n    #!");`
 
 ### Alternatives
 
