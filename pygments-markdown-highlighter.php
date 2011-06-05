@@ -3,7 +3,7 @@
  * Plugin Name: Pygments Markdown Highlighter
  * Plugin URI: https://github.com/pklaus/pygments-markdown-highlighter
  * Description: Given HTML formatted by Markdown, try to highlight the code blocks
- * Version: 0.1.2
+ * Version: 0.2
  * Author: Stephen H. Gerstacker, Philipp Klaus
  * Author URI: http://blog.philippklaus.de/2011/06/a-pygments-highlighter-for-code-blocks-in-wordpress-posts-written-with-markdown-syntax/
  * License: MIT

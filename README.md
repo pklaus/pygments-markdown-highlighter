@@ -1,10 +1,10 @@
 ## Pygments highlighter for code blocks in Wordpress posts written with Markdown Syntax
 
-pygments-markdown-highlighter is a plugin for [WordPress][] to highlight Code blocks using the syntax highlighter [Pygments]. This enables you to have code highlighting for your Markdown code blocks while writing your whole blog posts using [Markdown][]. You can specify the language of the code block in its first line.
+pygments-markdown-highlighter is a plugin for [WordPress][] to highlight code blocks using the syntax highlighter [Pygments]. This enables you to have code highlighting for your Markdown code blocks while writing your whole blog posts using [Markdown][]. You can specify the language of the code block in its first line.
 
 ### Installation
 
-First install Pygments on the system. On a Debian/Ubuntu web server this would be:
+First install Pygments on the system. On a Debian/Ubuntu web server this would be the package [python-pygments](http://packages.debian.org/squeeze/python-pygments):
 
     ssh user@yourblog
     su
@@ -21,19 +21,28 @@ Then install the plugin itself. Again, we connect via ssh and download the plugi
 
 If you don't have access to neither ssh nor git, you may still be able to upload the plugin to your server via *Add Plugin* → *Upload*.
 
-Now activate the plugin on the plugin site http://yourblog/wp-admin/plugins.php.
+Finally activate the plugin on the plugin overview page of your WordPress blog.
 
 ### Configuration
 
-There is a configuration site for the plugin. It's named 'Pygments Markdown Highlighter' and is found in the Settings section admin web interface of WordPress.
-Alternatively go directly to
-http://yourblog/wp-admin/options-general.php?page=pygments-markdown-highlighter/pygments-markdown-highlighter.php .
+There is a configuration page for the plugin. It's named 'Pygments Markdown Highlighter' and can be found in the settings section on the admin area of your WordPress blog.
+
+You can configure if you want the line numbers to be displayed inline with the code (bad for copy'n'paste or using a table.
+In addition you can set the colour scheme for the highlighted code and a custom path to your Pygments binary.
 
 ### Usage
 
-To highlight code in your posts, add a shebang styled first line `    #!lexername` to your code. Replace `lexername` with the lexer keyword for the language that you want to be highlighted as shown in the [List of Pygments Lexers][].
+To highlight code in your posts, add a shebang styled first line `#!lexername` to your code. Replace `lexername` with the lexer keyword for the language that you want to be highlighted as shown in the [List of Pygments Lexers][].
+
+An example for code that will be highlighted as Python source code on your blog (the first line will not be shown):
+
+        #!python
+        import platform
+        print "This is Python %s." % platform.python_version()
 
 ### Upgrading
+
+If you want to upgrade, a simple `git pull` in the plugin directory should be enough.
 
 The first version of this plugin by Stephen H. Gerstacker used a different notation: `    :::lexername`. To convert posts from the old notation to the shebang style notation you can use the following SQL commands:
 
@@ -44,7 +53,7 @@ The first version of this plugin by Stephen H. Gerstacker used a different notat
 
 ### Alternatives
 
-* The is another wordpress plugin called **wp-markdown-syntax-highlight**
+* There is another WordPress plugin called **wp-markdown-syntax-highlight**
   <https://github.com/spjwebster/wp-markdown-syntax-highlight>.
   It includes the PHP-based GeSHi code highlighter and you can highlight
   Markdown code blocks with an language indicator like a shebang: `#!python`.
@@ -86,9 +95,10 @@ THE SOFTWARE.
   * Homepage: <http://shortround.net/>
   * Source Code: <https://github.com/stack/pygments-markdown-highlighter>
 
-* Philipp Klaus – Contributions to the documentation
+* Philipp Klaus – Contributions to the documentation and the plugin.
   * Blog post on pygments-markdown-highlighter: <http://wp.me/p1fyOX-ZJ>
   * Source Code: <https://github.com/pklaus/pygments-markdown-highlighter>
+  * E-Mail: philipp.klaus →AT→ gmail.com
 
 [WordPress]: http://wordpress.org/
 [Pygments]: http://pygments.org
