@@ -1,6 +1,6 @@
 ## Pygments highlighter for code blocks in Wordpress posts written with Markdown Syntax
 
-pygments-markdown-highlighter is a plugin for [WordPress][] to highlight Code blocks using the syntax highlighter [Pygments]. This way you can write your Post entries using [Markdown][] and have code highlighting for your Markdown code blocks. You can specify the language of the code block in its first line.
+pygments-markdown-highlighter is a plugin for [WordPress][] to highlight Code blocks using the syntax highlighter [Pygments]. This enables you to have code highlighting for your Markdown code blocks while writing your whole blog posts using [Markdown][]. You can specify the language of the code block in its first line.
 
 ### Installation
 
@@ -13,7 +13,7 @@ First install Pygments on the system. On a Debian/Ubuntu web server this would b
 
 I don't now how to install Pygments if you don't have administrative permissions on your server. If you do, please contact me so that I can update these instructions.
 
-Then install the plugin itself. Again, we connect via ssh and download the plugin to the WordPress plugins folder using git. This way it is a repository, that can be updated easily:
+Then install the plugin itself. Again, we connect via ssh and download the plugin to the WordPress plugins folder using git. This way the plugin will be a git repository and can be updated easily using `git pull`:
 
     ssh user@yourblog
     cd /your/blog/folder/wp-content/plugins
@@ -32,6 +32,22 @@ http://yourblog/wp-admin/options-general.php?page=pygments-markdown-highlighter/
 ### Usage
 
 To highlight code in your posts, simply add a line `:::lexername` to the first line of your code. Replace `lexername` with the lexer keyword for the language that you want to be highlighted as shown in the [List of Pygments Lexers][].
+
+### Alternatives
+
+* The is another wordpress plugin called **wp-markdown-syntax-highlight**
+  <https://github.com/spjwebster/wp-markdown-syntax-highlight>.
+  It includes the PHP-based GeSHi code highlighter and you can highlight
+  Markdown code blocks with an language indicator like a shebang: `#!python`.
+* Write regular Markdown code blocks and use
+  **[highlight.js](http://softwaremaniacs.org/soft/highlight/en/)**,
+  (a pure-javascript syntax highlighter that automatically detects the
+  language of code blocks). You may install this script manually or try
+  out the WordPress plugin <http://lpriori.org/highlightjs/>.  
+* As you can put regular HTML in your Markdown text, you may just put
+  a `<code>` block in your text.
+  This way you can **rely on any other source code markup plugin** to
+  markup your code.
 
 ### Copyright and License
 
