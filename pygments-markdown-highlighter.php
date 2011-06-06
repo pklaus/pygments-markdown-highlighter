@@ -148,7 +148,7 @@ if (!class_exists("PygmentsMarkdownHighlighter")) {
 
         $return_values = proc_close($process);
 
-        return $formatted_text;
+        return '<div class="pygmented_code">'.$formatted_text.'</div>';
       } else {
         return "Error pygmentizing...";
       }
