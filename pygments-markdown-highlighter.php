@@ -124,6 +124,7 @@ if (!class_exists("PygmentsMarkdownHighlighter")) {
       }
 
       $options[] = 'nobackground=1';
+      $options[] = 'encoding=utf-8';
       $opts = '-O ' . implode($options, ',');
 
       // Format!
@@ -147,6 +148,9 @@ if (!class_exists("PygmentsMarkdownHighlighter")) {
         fclose($pipes[1]);
 
         $return_values = proc_close($process);
+
+        // For debuging:
+        //$formatted_text = $this->command . " -f html " . $opts . " -l " . $lexer . "\n" . $formatted_text;
 
         return '<div class="pygmented_code">'.$formatted_text.'</div>';
       } else {
